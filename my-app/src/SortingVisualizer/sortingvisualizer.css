@@ -1,0 +1,20 @@
+.array-container {
+    position: absolute;
+    left:10%;
+    right:10%;
+    bottom: 0px;
+}
+.array-bar {
+    width:10px;
+    display:inline-block;
+    margin: 2px 2px;
+}
+.header {
+    position:absolute;
+    top:0px;
+    left:50%;
+    transform:translate(-50%, 0);
+}
+.header .btn {
+    margin:10px;
+}
