@@ -10,7 +10,7 @@
     margin: 2px 2px;
 }
 .header {
-    position:absolute;
+    position:relative;
     top:0px;
     left:50%;
     transform:translate(-50%, 0);

@@ -27,24 +27,13 @@ function quickSort( auxArray, lower, upper, animations )
 }
 
 function partition(auxArray, lower, upper, animations) {
-    
-    
-
     let pivot = auxArray[lower];
     let start = lower; // index where the first element that is greater than the pivot is from the left
     let end = upper;   // index where the first element that is less than the pivot is from the right
-    
-    animations.push(lower); // (1)
-    let traverse = [];      // (2)
-    let swaps = [];
-    let turnOffTraverse = []; 
-    let selectLowerEnd = [];
-    let second_swaps = [];
+
 
     while ( start < end )
     {
-        traverse.push( [start, end] );
-        turnOffTraverse.push( [start, end] );
         while ( auxArray[start] <= pivot ) // traverse along the auxArray from left to right until found element greater than pivot
         {
 
@@ -55,32 +44,28 @@ function partition(auxArray, lower, upper, animations) {
         {
             end--;
         }
-        // highlight and swap the heights of the two bars
+
         if ( start < end )
         {
-            swaps.push( [start, auxArray[end] ] );
-            swaps.push( [end, auxArray[start] ] );
+            animations.push( [start, end] );
+            animations.push( [start, auxArray[end] ] );
+            animations.push( [end, auxArray[start] ] );
+            animations.push( [start, end] );
+
             swap( auxArray, start, end ); // start must be found before end
         }
     }
-    selectLowerEnd.push( [lower, end] );
-    second_swaps.push( [lower, auxArray[end] ] );
-    second_swaps.push( [end, auxArray[lower] ] );
-    
+    animations.push( [lower, end] );
+    animations.push( [lower, auxArray[end] ] );
+    animations.push( [end, auxArray[lower] ] );
+    animations.push( [lower, end] );
     
     swap( auxArray, lower, end ); // swap the pivot element with the 'end' index
-
-    animations.push(traverse);
-    animations.push(swaps);
-    animations.push(turnOffTraverse);
-    animations.push(selectLowerEnd);
-    animations.push(second_swaps);
-    animations.push( [lower, end] ); //change colors back
 
     return end;
 }
 
-function swap( auxArray, start, end ) 
+export function swap( auxArray, start, end ) 
 {
     let temp = auxArray[start];
     auxArray[start] = auxArray[end];

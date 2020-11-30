@@ -2,26 +2,27 @@ import React from 'react';
 import './sortingvisualizer.css';
 import {getMergeSortAnimations} from  './SortingAlgorithms/mergeSort.js';
 import {getBubbleSortAnimations} from  './SortingAlgorithms/bubbleSort.js';
-//import {getHeapSortAnimations} from  './SortingAlgorithms/heapSort.js';
+import {getHeapSortAnimations} from  './SortingAlgorithms/heapSort.js';
 import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
 //import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
 
 //TODO:
 // lower the default number of bars so you can actually see, and lower speed.
 // Change this value for the speed of the animations.
+// add reset array button ( back to same original array ) 
 
 
 
-const ANIMATION_SPEED_MS = 10;
+const ANIMATION_SPEED_MS = 300;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 70;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = 'pink';
+const PRIMARY_COLOR = '#E4D6A7';
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = 'blue';
+const SECONDARY_COLOR = '#9B2915';
 
 
 export default class sortingvisualizer extends React.Component {
@@ -91,67 +92,7 @@ export default class sortingvisualizer extends React.Component {
         const animations = getQuickSortAnimations(this.state.array);
         console.log(this.state.array);
         console.log(animations);
-        for (let i = 0; i < animations.length; i++)
-        {
-            const arrayBars = document.getElementsByClassName('array-bar');
-            let order = i%7;
-            // show the pivot
-            if ( order === 0 )
-            {
-                setTimeout( () => {
-                    arrayBars[ animations[i] ].style.backgroundColor = SECONDARY_COLOR;
-                }, i * ANIMATION_SPEED_MS);
-            }
-            // show the traversing of start and end pointers
-            else if ( order === 1 || order === 2 || order === 3 || order === 5 )
-            {
-                for ( let j = 0; j < animations[i].length; j++ )
-                {
-                    let firstProperty = animations[i][j][0]; // index in both cases
-                    let secondProperty = animations[i][j][1];// index in first case, height in second
-                    if (order === 1)
-                    {
-                        setTimeout( () => {
-                            arrayBars[ firstProperty ].style.backgroundColor = '#99E1D9';
-                            arrayBars[ secondProperty ].style.backgroundColor = '#99E1D9';
-                        }, i * ANIMATION_SPEED_MS);
-                    }
-                    else if ( order === 2  || order === 5 )
-                    {
-                        console.log(firstProperty);
-                        console.log(secondProperty);
-                        setTimeout( () => {
-                            arrayBars[ firstProperty ].style.height = `${secondProperty}px`;
-                        }, i * ANIMATION_SPEED_MS);
-                    }
-                    else
-                    {
-                        setTimeout( () => {
-                            arrayBars[ firstProperty ].style.backgroundColor = PRIMARY_COLOR;
-                            arrayBars[ secondProperty ].style.backgroundColor = PRIMARY_COLOR;
-                        }, i * ANIMATION_SPEED_MS);
-                    }
-                }
-            }
-            else if ( order === 4)
-            {
-                let firstIndex = animations[i][0][0];
-                let secondIndex = animations[i][0][1];
-                setTimeout( () => {
-                    arrayBars[ firstIndex ].style.backgroundColor = '#99E1D9';
-                    arrayBars[ secondIndex ].style.backgroundColor = '#99E1D9';
-                }, i * ANIMATION_SPEED_MS);
-            }
-            else if (order === 6)
-            {
-                let a = animations[i][0];
-                let b = animations[i][1];
-                setTimeout( () => {
-                    arrayBars[ a ].style.backgroundColor = PRIMARY_COLOR;
-                    arrayBars[ b ].style.backgroundColor = PRIMARY_COLOR;
-                }, i * ANIMATION_SPEED_MS);
-            }
-        }
+        this.showSwap(animations);
     }
 
 
@@ -200,11 +141,52 @@ export default class sortingvisualizer extends React.Component {
 
 
 
-    heapSort() {}
+    heapSort() {
+        const animations = getHeapSortAnimations(this.state.array);
+        console.log(this.state.array);
+        console.log(animations);
+        this.showSwap(animations);
+    }
 
     insertionSort() {}
 
 
+    showSwap(animations) {
+        for ( let i = 0; i < animations.length; i++)
+        {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            let order = i%4;
+            if (order === 0)
+            {
+                let indexOne = animations[i][0];
+                let indexTwo = animations[i][1];
+                
+                setTimeout( () => {
+                    arrayBars[indexOne].style.backgroundColor = SECONDARY_COLOR;
+                    arrayBars[indexTwo].style.backgroundColor = SECONDARY_COLOR;
+                }, i * ANIMATION_SPEED_MS);
+            }
+            else if (order === 3)
+            {
+                let indexOne = animations[i][0];
+                let indexTwo = animations[i][1];
+
+                setTimeout( () => {
+                    arrayBars[indexOne].style.backgroundColor = PRIMARY_COLOR;
+                    arrayBars[indexTwo].style.backgroundColor = PRIMARY_COLOR;
+                }, i * ANIMATION_SPEED_MS);
+            }
+            else if ( order === 1|| order === 2 )
+            {
+                let indexToChange = animations[i][0];
+                let newHeight = animations[i][1];
+
+                setTimeout( () => {
+                    arrayBars[indexToChange].style.height = `${newHeight}px`;
+                }, i * ANIMATION_SPEED_MS);
+            }
+        }
+    }
 
     render() {
         const {array} = this.state;
