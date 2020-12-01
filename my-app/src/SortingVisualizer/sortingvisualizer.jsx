@@ -4,7 +4,8 @@ import {getMergeSortAnimations} from  './SortingAlgorithms/mergeSort.js';
 import {getBubbleSortAnimations} from  './SortingAlgorithms/bubbleSort.js';
 import {getHeapSortAnimations} from  './SortingAlgorithms/heapSort.js';
 import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
-//import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
+import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
+import {getSelectionSortAnimations} from './SortingAlgorithms/selectionSort';
 
 //TODO:
 // lower the default number of bars so you can actually see, and lower speed.
@@ -13,7 +14,7 @@ import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
 
 
 
-const ANIMATION_SPEED_MS = 300;
+const ANIMATION_SPEED_MS = 70;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 70;
@@ -23,6 +24,7 @@ const PRIMARY_COLOR = '#E4D6A7';
 
 // This is the color of array bars that are being compared throughout the animations.
 const SECONDARY_COLOR = '#9B2915';
+const SECONDARY_COLOR_TWO = '#E63462';
 
 
 export default class sortingvisualizer extends React.Component {
@@ -40,16 +42,16 @@ export default class sortingvisualizer extends React.Component {
         this.resetArray();
     }
 
-
     resetArray() 
     {
         const array = [];
         for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-            array.push(randomIntBetween(10,550));
+            array.push(randomIntBetween(7,550));
         }
         this.setState({array});
     }
 
+    // sorts
     mergeSort() 
     {
         const animations = getMergeSortAnimations(this.state.array);
@@ -62,12 +64,20 @@ export default class sortingvisualizer extends React.Component {
             const [barOneIdx, barTwoIdx] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
             const barTwoStyle = arrayBars[barTwoIdx].style;
-            const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-
-            setTimeout(() => {
-            barOneStyle.backgroundColor = color;
-            barTwoStyle.backgroundColor = color;
-            }, i * ANIMATION_SPEED_MS);
+            if ( i%3 === 0)
+            {
+                setTimeout(() => {
+                barOneStyle.backgroundColor = SECONDARY_COLOR;
+                barTwoStyle.backgroundColor = SECONDARY_COLOR_TWO;
+                }, i * ANIMATION_SPEED_MS);
+            }
+            if (i%3 === 2)
+            {
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = PRIMARY_COLOR;
+                    barTwoStyle.backgroundColor = PRIMARY_COLOR;
+                    }, i * ANIMATION_SPEED_MS);
+            }
           }
           else 
           {
@@ -82,20 +92,9 @@ export default class sortingvisualizer extends React.Component {
 
     quickSort() 
     {
-        //animations.push(lower); // (1)
-        // let traverse = [];      // (2)
-        // let swaps = [];
-        // let turnOffTraverse = []; 
-        // let selectLowerEnd = [];
-        // let second_swaps = [];
-        // [lower, end]
         const animations = getQuickSortAnimations(this.state.array);
-        console.log(this.state.array);
-        console.log(animations);
         this.showSwap(animations);
     }
-
-
 
     bubbleSort() 
     {
@@ -118,12 +117,22 @@ export default class sortingvisualizer extends React.Component {
             const [barOneIdx, barTwoIdx] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
             const barTwoStyle = arrayBars[barTwoIdx].style;
-            const color = i % 4 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR; //first of the 4 changes color, then the second changes back (4th animation)
-            
-            setTimeout(() => {
-                barOneStyle.backgroundColor = color;
-                barTwoStyle.backgroundColor = color;
-            }, i * ANIMATION_SPEED_MS);
+           
+            if (i%4 === 0)
+            {
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = SECONDARY_COLOR;
+                    barTwoStyle.backgroundColor = SECONDARY_COLOR_TWO;
+                }, i * ANIMATION_SPEED_MS);
+            }
+
+            if (i%4 === 3)
+            {
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = PRIMARY_COLOR;
+                    barTwoStyle.backgroundColor = PRIMARY_COLOR;
+                }, i * ANIMATION_SPEED_MS);
+            }
           }
 
           else if ( (i % 4 === 1 ||  i % 4 === 2) && animations[i] !== 'no swap')  // if third or fourth value AND swapping occured, change the bars
@@ -139,17 +148,20 @@ export default class sortingvisualizer extends React.Component {
         
     }
 
-
-
     heapSort() {
         const animations = getHeapSortAnimations(this.state.array);
-        console.log(this.state.array);
-        console.log(animations);
         this.showSwap(animations);
     }
 
-    insertionSort() {}
+    insertionSort() {
+        const animations = getInsertionSortAnimations(this.state.array);
+        this.showSwap(animations);
+    }
 
+    selectionSort() {
+        const animations = getSelectionSortAnimations(this.state.array);
+        this.showSwap(animations);
+    }
 
     showSwap(animations) {
         for ( let i = 0; i < animations.length; i++)
@@ -163,7 +175,7 @@ export default class sortingvisualizer extends React.Component {
                 
                 setTimeout( () => {
                     arrayBars[indexOne].style.backgroundColor = SECONDARY_COLOR;
-                    arrayBars[indexTwo].style.backgroundColor = SECONDARY_COLOR;
+                    arrayBars[indexTwo].style.backgroundColor = SECONDARY_COLOR_TWO;
                 }, i * ANIMATION_SPEED_MS);
             }
             else if (order === 3)
@@ -192,28 +204,29 @@ export default class sortingvisualizer extends React.Component {
         const {array} = this.state;
 
         return (
-            [<div className="array-container">
-                {array.map( (value, idx) => (
-                    <div
-                        className="array-bar"
-                        key={idx}
-                        style={{
-                            height: `${value}px`,
-                            backgroundColor: PRIMARY_COLOR,
-                        }}
-                    ></div>
-                ))}
-            </div>,
-
-            <div className='header'>
-                <h1>Sorting Visualizer</h1>
+            [
+            <header className='navbar'>
+                <h1 id = "title">Sorting Algorithms</h1>
                 <button className="btn" onClick = {() => this.resetArray()}>Generate New Array</button>
                 <button className="btn" onClick = {() => this.quickSort()}>Quick Sort</button>
                 <button className="btn" onClick = {() => this.bubbleSort()}>Bubble Sort</button>
                 <button className="btn" onClick = {() => this.mergeSort()}>Merge Sort</button>
                 <button className="btn" onClick = {() => this.heapSort()}>Heap Sort</button>
                 <button className="btn" onClick = {() => this.insertionSort()}>Insertion Sort</button>
-                <hr></hr>
+                <button className="btn" onClick = {() => this.selectionSort()}>Selection Sort</button>
+            </header>,
+
+            <div className="array-container">
+            {array.map( (value, idx) => (
+                <div
+                    className="array-bar"
+                    key={idx}
+                    style={{
+                        height: `${value}px`,
+                        backgroundColor: PRIMARY_COLOR,
+                    }}
+                ></div>
+            ))}
             </div>
                 ]
         );

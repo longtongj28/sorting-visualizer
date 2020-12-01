@@ -2,15 +2,10 @@ import {swap} from './quickSort';
 
 export function getHeapSortAnimations(array) {
     const animations = [];
-    if (array.length <= 1) return array;
-    let auxArray = [];
+
     let n = array.length;
-    for ( let i = 0; i < n; i++)
-    {
-      auxArray[i] = array[i];
-    }
    
-    heapSort(auxArray, n, animations);
+    heapSort(array, n, animations);
     return animations;
 }
 //using max heap concept to sort

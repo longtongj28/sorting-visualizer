@@ -1,17 +1,12 @@
 export function getQuickSortAnimations( array ) {
     const animations = [];
-    const auxArray = [];
 
     let n = array.length;
-    for (let i = 0; i < n; i++)
-    {
-        auxArray[i] = array[i];
-    }
 
     let lower = 0;
     let upper = n - 1;
     
-    quickSort( auxArray, lower, upper, animations ); 
+    quickSort( array, lower, upper, animations ); 
 
     return animations;
 }
