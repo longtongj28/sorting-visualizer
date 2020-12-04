@@ -2,14 +2,14 @@
      margin: 0; 
      padding: 0;
      font-family: 'Open Sans', sans-serif;
-     background-color: #364652;
+     background-color: #3a4d5c;
 }
-
 .array-container {
     position: absolute;
     left:5%;
     right:5%;
     bottom:0px;
+    z-index: -1;
 }
 
 .array-bar {
@@ -17,18 +17,19 @@
     border-radius: 3.5px;
     display:inline-block;
     margin: 3px;
-    box-shadow: 2px 2px 15px #9DA2AB;
+    box-shadow: 10px 0px 5px -2px #262c21;
     transition: height 0.25s;
 }
 
-.navbar {
+.top {
+    z-index: 0;
     box-shadow: 10px 10px 10px #343E3D;
     position: relative;
     background-color: #1D1E2C;
-    z-index: 100;
+    
 }
 
-.navbar #title {
+.top #title {
     text-shadow: 2px 2px 10px #F7F7FF;
     background-color: #1D1E2C;
     font-weight: 100;
@@ -38,24 +39,67 @@
     color: white;
 }
 
-.navbar .btn {
-    border-radius: 5px;
-    box-shadow: 2px 2px 15px 6E6A6F;
-    font-size: medium;
+.button-bar {
+    position: relative;
+    background-color: #1D1E2C ;
+}
+.btn {
+    border-radius: 3px;
+    box-shadow: 2px 2px 15px #454B66;
+    font-size: 14px;
     text-transform: uppercase;
-    text-shadow: 1px 1px 5px #F7F7FF;
     color: white;
     border:none;
     outline:none;
     background-color:#61A0AF;
     display:inline-block;
-    transition: all 0.5s;
+    transition: all 0.25s;
     padding: 10px;
-    margin:10px;
+    margin:15px;
     cursor: pointer;
 }
 
-.navbar .btn:hover {
+.btn:hover {
     color:#61A0AF;
+    box-shadow: 0 12px 16px 0 rgba(88, 129, 156, 0.24), 0 17px 50px 0 rgba(82, 160, 206, 0.19);
     background: white;
+}
+
+.btn:active {
+    color:white;
+    background:#1768AC;
+}
+
+
+.settings {
+    z-index: 2;
+    border-radius: 50%;
+    position:absolute;
+    outline:none;
+    cursor: pointer;
+    left:1%;
+    top:10%;
+    background:none;
+    border:none;
+    transition: all 0.25s;
+}
+
+#github-link {
+    z-index: 10;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    background:none;
+}
+#github-icon {
+    background:none;
+    color: white;
+    height: 35px;
+    width: 35px;
+    transition: all 1s;
+}
+#github-icon:hover {
+    height: 40px;
+    width: 40px;
+    color:grey;
 }

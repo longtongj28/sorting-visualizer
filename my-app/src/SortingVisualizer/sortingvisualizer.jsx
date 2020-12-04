@@ -1,20 +1,23 @@
 import React from 'react';
 import './sortingvisualizer.css';
+import Navbar from '../components/Navbar'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {getMergeSortAnimations} from  './SortingAlgorithms/mergeSort.js';
 import {getBubbleSortAnimations} from  './SortingAlgorithms/bubbleSort.js';
 import {getHeapSortAnimations} from  './SortingAlgorithms/heapSort.js';
 import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
 import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
 import {getSelectionSortAnimations} from './SortingAlgorithms/selectionSort';
+import {AiFillGithub} from 'react-icons/ai';
 
 //TODO:
-// lower the default number of bars so you can actually see, and lower speed.
-// Change this value for the speed of the animations.
-// add reset array button ( back to same original array ) 
+// Add settings button ( top left ), maybe with a different component? have sidebar open up when clicked, can change color of stuff
+// and speed of stuff
+// github link and info top right
 
 
 
-const ANIMATION_SPEED_MS = 70;
+const ANIMATION_SPEED_MS = 30;
 
 // Change this value for the number of bars (value) in the array.
 const NUMBER_OF_ARRAY_BARS = 70;
@@ -23,8 +26,9 @@ const NUMBER_OF_ARRAY_BARS = 70;
 const PRIMARY_COLOR = '#E4D6A7';
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = '#9B2915';
-const SECONDARY_COLOR_TWO = '#E63462';
+const SECONDARY_COLOR = '#B3FFFC';
+
+const SECONDARY_COLOR_TWO = '#F79F79';
 
 
 export default class sortingvisualizer extends React.Component {
@@ -33,10 +37,9 @@ export default class sortingvisualizer extends React.Component {
 
         this.state = {
             array: [],
+            // speed: 50,
         };
     }
-
-
     componentDidMount() 
     {
         this.resetArray();
@@ -205,15 +208,24 @@ export default class sortingvisualizer extends React.Component {
 
         return (
             [
-            <header className='navbar'>
+            <header className="top">
+                <Router>
+                    <Navbar/>
+                    <Switch>
+                        <Route path = '/' />
+                    </Switch>
+                </Router>
+                <a id="github-link" href= "#"><AiFillGithub id="github-icon"/></a>
                 <h1 id = "title">Sorting Algorithms</h1>
-                <button className="btn" onClick = {() => this.resetArray()}>Generate New Array</button>
-                <button className="btn" onClick = {() => this.quickSort()}>Quick Sort</button>
-                <button className="btn" onClick = {() => this.bubbleSort()}>Bubble Sort</button>
-                <button className="btn" onClick = {() => this.mergeSort()}>Merge Sort</button>
-                <button className="btn" onClick = {() => this.heapSort()}>Heap Sort</button>
-                <button className="btn" onClick = {() => this.insertionSort()}>Insertion Sort</button>
-                <button className="btn" onClick = {() => this.selectionSort()}>Selection Sort</button>
+                <div className = "button-bar">
+                    <button className="btn" onClick = {() => this.resetArray()}> Generate New Array</button>
+                    <button className="btn" onClick = {() => this.quickSort()}>Quick Sort</button>
+                    <button className="btn" onClick = {() => this.bubbleSort()}>Bubble Sort</button>
+                    <button className="btn" onClick = {() => this.mergeSort()}>Merge Sort</button>
+                    <button className="btn" onClick = {() => this.heapSort()}>Heap Sort</button>
+                    <button className="btn" onClick = {() => this.insertionSort()}>Insertion Sort</button>
+                    <button className="btn" onClick = {() => this.selectionSort()}>Selection Sort</button>
+                </div>
             </header>,
 
             <div className="array-container">
