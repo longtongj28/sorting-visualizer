@@ -1,3 +1,37 @@
+.nav-menu {
+    overflow: auto;
+    z-index: 100;
+    box-shadow: 2px 2px 15px -2px black;
+    width: 300px;
+    height: 100vh;
+    display:flex;
+    justify-content: left;
+    position:fixed;
+    top:0;
+    left: -100%;
+    transition:1s;
+}
+.nav-menu.active {
+    left:0;
+    transition:400ms;
+}
+
+.menu-items {
+    position: absolute;
+    top: 100px;
+    display: block;
+}
+.nav-text {
+    margin: 10px;
+    display: flex;
+    height:70px;
+    width: 250px;
+    background: none;
+}
+
+
+
+/* Buttons */
 .navbar {
     z-index: 3;
     background-color: none;
@@ -13,68 +47,6 @@
     font-size: 2rem;
     background:none;
 }
-.close {
-    position: absolute;
-    right: 50px;
-    font-size: 2rem;
-    transition: all 0.5s;
-}
-.nav-menu {
-    z-index: 100;
-    box-shadow: 2px 2px 15px -2px black;
-    width: 250px;
-    height: 100vh;
-    display:flex;
-    justify-content: left;
-    position:fixed;
-    top:0;
-    left: -100%;
-    transition:1s;
-}
-
-.nav-menu.active {
-    left:0;
-    transition:350ms;
-}
-
-.nav-text {
-    display: flex;
-    justify-content:center;
-    padding: 8px 0px 8px 16px;
-    list-style: none;
-    height: 60px;
-}
-
-.nav-text a {
-    text-decoration:none;
-    color:white;
-    font-size: 15px;
-    width: 95%;
-    height: 100%;
-    display:flex;
-    align-items: center;
-    padding:0 10px;
-    border-radius: 4px;
-    transition: all 0.5s;
-}
-
-.nav-text a:hover {
-    color: #61A0AF;
-}
-
-.navbar-toggle {
-    background: none;
-    width:100%;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items:center;
-}
-
-span {
-    margin-left:16px;
-}
-
 .settings-icon {
     height: 35px;
     width: 35px;
@@ -85,8 +57,22 @@ span {
 .settings-icon:hover {
     height:40px;
     width: 40px;
-    transform:rotate(45deg);
+    transform:rotate(25deg);
 }
 .settings-icon:active {
     transform:rotate(-45deg);
+}
+
+.close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+}
+
+.close:hover {
+    height: 35px;
+    width:35px;
 }

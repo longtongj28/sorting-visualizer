@@ -1,6 +1,6 @@
 import React from 'react';
 import './sortingvisualizer.css';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {getMergeSortAnimations} from  './SortingAlgorithms/mergeSort.js';
 import {getBubbleSortAnimations} from  './SortingAlgorithms/bubbleSort.js';
@@ -9,7 +9,7 @@ import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
 import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
 import {getSelectionSortAnimations} from './SortingAlgorithms/selectionSort';
 import {AiFillGithub} from 'react-icons/ai';
-
+import AboutBubble from '../aboutSorts/AboutBubble';
 //TODO:
 // Add settings button ( top left ), maybe with a different component? have sidebar open up when clicked, can change color of stuff
 // and speed of stuff
@@ -37,6 +37,7 @@ export default class sortingvisualizer extends React.Component {
 
         this.state = {
             array: [],
+            sorted: false,
             // speed: 50,
         };
     }
@@ -212,10 +213,12 @@ export default class sortingvisualizer extends React.Component {
                 <Router>
                     <Navbar/>
                     <Switch>
-                        <Route path = '/' />
+                        <Route path = '/'/>
+                        <Route path = '/bubbleSort' exact component={AboutBubble}/>
                     </Switch>
                 </Router>
-                <a id="github-link" href= "#"><AiFillGithub id="github-icon"/></a>
+                <a id="github-link" target ="_blank" href= "https://github.com/longtongj28/sorting-visualizer"><AiFillGithub id="github-icon"/></a>
+                <a className="homelink" href='/'></a>
                 <h1 id = "title">Sorting Algorithms</h1>
                 <div className = "button-bar">
                     <button className="btn" onClick = {() => this.resetArray()}> Generate New Array</button>

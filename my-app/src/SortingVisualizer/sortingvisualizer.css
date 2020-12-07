@@ -103,3 +103,11 @@
     width: 40px;
     color:grey;
 }
+.homelink{
+    position:absolute;
+    background: transparent;
+    left:50%;
+    transform:translate(-50%);
+    height: 50px;
+    width: 350px;
+}

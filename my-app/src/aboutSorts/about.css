@@ -1,0 +1,71 @@
+.infoBox {
+    display:flex;
+    height: 98vh;
+    align-items: center;
+    justify-content: center;
+    font-size:3rem;
+    background: none;
+}
+.aboutSortInfo {
+    color: #EEEEEE;
+    background: none;
+}
+.aboutSortInfo.hr {
+    height:2px;
+}
+.titles {
+    text-align: center;
+    background: none;
+}
+.paragraphs {
+    background: none;
+}
+
+.sortInfoButton {
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 1px;
+    position:absolute;
+    z-index:150;
+    outline: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-color: none;
+    transition: all 0.5s;
+}
+.sortInfoButton:hover {
+    color: #EACDC2;
+    font-size: 20px;
+}
+.close-button {
+    border:none;
+    position: absolute;
+    background: none;
+    outline: none;
+    right: 10px;
+    top: 10px;
+}
+.close-icon {
+    height: 30px;
+    width:30px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.link {
+    color: #46B1C9;
+    background-color: transparent;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: all 150ms;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}

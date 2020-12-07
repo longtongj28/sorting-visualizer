@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
-import Backdrop from '../components/backdrop/Backdrop';
+import Backdrop from '../backdrop/Backdrop';
 import { AiTwotoneSetting } from "react-icons/ai";
 import {Link} from 'react-router-dom';
-import {AiOutlineClose} from 'react-icons/ai';
+import {AiOutlineClose,AiOutlineInfoCircle} from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import {IconContext} from 'react-icons';
 import './Navbar.css';
 
-function Navbar(props) {
+function Navbar() {
     const [sidebar, setSideBar] = useState(false);
+    
 
     const showSidebar = () => {
         setSideBar(!sidebar);
@@ -25,7 +26,7 @@ function Navbar(props) {
             {backdrop}
             <div className="navbar">
                 <Link to="#" className='menu-bars'>
-                    <AiTwotoneSetting className='settings-icon' onClick={showSidebar}/>
+                    <AiOutlineInfoCircle color="white"className='settings-icon' onClick={showSidebar}/>
                 </Link>
             </div> 
             <nav className={sidebar ? 'nav-menu active':'nav-menu'}>
@@ -35,16 +36,15 @@ function Navbar(props) {
                             <AiOutlineClose className='close' onClick={showSidebar}/>
                         </Link>
                     </li>
-                    {SidebarData.map( (item, index) => {
-                        return (
-                            <li onClick={showSidebar} kay={index} className={item.cName}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        )
-                    })}
+                    <div className="menu-items">
+                        {SidebarData.map( (item, index) => {
+                            return (
+                                <li kay={index} className={item.cName}>
+                                    {item.path}
+                                </li>
+                            )
+                        })}
+                    </div>
                 </ul>
             </nav> 
             </IconContext.Provider>

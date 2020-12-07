@@ -1,55 +1,39 @@
 import React from 'react';
-import { AiTwotoneSetting } from "react-icons/ai";
-import {AiFillContacts, AiFillHome , AiOutlineClose, AiFillQuestionCircle
-} from 'react-icons/ai';
+import AboutBubble from '../../aboutSorts/AboutBubble';
+import AboutHeap from '../../aboutSorts/AboutHeap';
+import AboutInsertion from '../../aboutSorts/AboutInsertion';
+import AboutMe from '../../aboutSorts/AboutMe';
+import AboutMerge from '../../aboutSorts/AboutMerge';
+import AboutQuick from '../../aboutSorts/AboutQuick';
+import AboutSelection from '../../aboutSorts/AboutSelection';
 
 export const SidebarData = [
     {
-        title: 'Home',
-        path: '/',
-        icon: <AiFillHome/>,
+        path: <AboutHeap/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Heap Sort',
-        path: '/heapSort',
-        icon: <AiFillQuestionCircle/>,
+        path: <AboutBubble/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Bubble Sort',
-        path: '/bubbleSort',
-        icon: <AiFillQuestionCircle/>,
+        path: <AboutInsertion/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Insertion Sort',
-        path: '/insertionSort',
-        icon: <AiFillQuestionCircle/>,
+        path: <AboutSelection/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Selection Sort',
-        path: '/selectionSort',
-        icon: <AiFillQuestionCircle/>,
+        path: <AboutQuick/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Quick Sort',
-        path: '/quickSort',
-        icon: <AiFillQuestionCircle/>,
+        path: <AboutMerge/>,
         cName: 'nav-text'
     },
     {
-        title: 'About Merge Sort',
-        path: '/mergeSort',
-        icon: <AiFillQuestionCircle/>,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Contact me',
-        path: '/contactMe',
-        icon: <AiFillContacts/>,
+        path: <AboutMe/>,
         cName: 'nav-text'
     },
 ];
