@@ -59,15 +59,15 @@ function AboutBubble() {
                         
                         <p className="paragraphs">
                             for every element "i" of index 0 to arrayLength-1,<br/><br/>
-                            for every element "j" of index 0 to arrayLength - 1 - i, (see step 5 from "Basic Concept" above for the intuition)<br/><br/>
-                            if the element at j is greater than the element after it (j+1), swap them.<br/><br/>
-                            if no swap has occured during an iteration, that means the array is sorted, and we can forgo the remaining loop, improving the time complexity.<br/><br/>
+                            &emsp;&emsp;for every element "j" of index 0 to arrayLength - 1 - i, (see step 5 from "Basic Concept" above for the intuition)<br/><br/>
+                            &emsp;&emsp;&emsp;&emsp;if the element at j is greater than the element after it (j+1), swap them.<br/><br/>
+                            &emsp;&emsp;if no swap has occured during an iteration, that means the array is sorted, and we can forgo the remaining loop, improving the time complexity.<br/><br/>
                         </p>
                         <h2 className="titles">Big O Time Complexity<hr/><br/></h2>
                         
                         <p className="paragraphs">
                             This sorting algorithm is easy to understand, and is a nice "brute force" solution. However, the time complexity is
-                            O(n^2) in its worst case, and is slightly improved with some modifications, which I have included in the pseudocode. <br/><br/>
+                            O(n^2) in its worst case, and is slightly improved with some modifications, which I have included in the pseudocode. You can tell through the nested for loop that, for each element for the array, iterates the whole array again.<br/><br/>
                             Check out this <a className="link"target='_blank' href="https://www.youtube.com/watch?v=o4bAoo_gFBU">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.
                         </p>
                     </div>

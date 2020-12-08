@@ -36,7 +36,7 @@
 }
 .sortInfoButton:hover {
     color: #EACDC2;
-    font-size: 20px;
+    font-size: 17px;
 }
 .close-button {
     border:none;
@@ -68,4 +68,12 @@
 
 .ReactModal__Overlay--before-close{
     opacity: 0;
+}
+.tree-example {
+    background:none;
+    text-align: center;
+}
+
+.sub-headers {
+    background: none;
 }

@@ -33,7 +33,7 @@ function heapSort(array, n, animations)
   }
 }
 
-// moves the largest element in a tree to the root (i)
+// moves the largest element in a tree to the root
 function heapify(array, n, i, animations)
 {
   let largest = i;
