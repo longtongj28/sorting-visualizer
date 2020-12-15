@@ -255,7 +255,7 @@ export default class sortingvisualizer extends React.Component {
         return (
             [
             <header className="top">
-                <button title="Stop animation and reset array" className="stop-button"><a id="stop-link" href="/"><FaStopCircle id="stop-icon"/></a></button>
+                <button title="Stop animation and reset array" className="stop-button"><a id="stop-link" href="https://longtongj28.github.io/sorting-visualizer/"><FaStopCircle id="stop-icon"/></a></button>
                 <div className ="speedSlider">
                     <div className="name-slider">Speed</div>
                         <input title="Drag left to make animation faster" className="slider" type="range" min={1} max ={100}value={this.state.speed} onChange={this.handleChangeSpeed}/>
@@ -268,7 +268,7 @@ export default class sortingvisualizer extends React.Component {
                     <Navbar/>
                 </Router>
                 <a id="github-link" target ="_blank" rel = "nonreferrer" href= "https://github.com/longtongj28/sorting-visualizer"><AiFillGithub title="Github Repository for the site"id="github-icon"/></a>
-                <a className="homelink" href='/'></a>
+                <a className="homelink" href='https://longtongj28.github.io/sorting-visualizer/'></a>
                 <h1 id = "title">Sorting Algorithms</h1>
                 <div className = "button-bar">
                     <button className="btn" onClick = {() => this.resetArray()}> Generate New Array</button>
