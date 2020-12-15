@@ -21,7 +21,7 @@ function AboutHeap() {
                                 backgroundColor: 'rgba(0,0,0,0.4)'
                             },
                             content: {
-                                background: '#4A6C6F',
+                                background: '#B9314F',
                                 top: '60px',
                                 bottom: '60px',
                                 left: '60px',
@@ -32,8 +32,8 @@ function AboutHeap() {
                     }
                     isOpen={modalIsOpen} 
                     onRequestClose={ () => setModalIsOpen(false)}>
-                    <div className="aboutSortInfo">
-                        <h2 className = "titles">Basic Concept of Heap Sort<hr/><br/></h2>
+                    <div id="top" className="aboutSortInfo">
+                        <h2  className = "titles">Basic Concept of Heap Sort<hr/><br/></h2>
                         
                         <p className = "paragraphs">
                             The heap sort algorithm makes use of organizing data into a "max heap."<br/><br/>
@@ -93,7 +93,8 @@ function AboutHeap() {
                             The time complexity of the building of the max heap of the array takes O(n) time compelxity, since there are two for loops.
                             However, the heapify operations inside the for loops take O(logn) time.<br/>
                             Thus, the overall time complexity would be O(2 * n * logn), which can be simplified to O(nlogn).<br/><br/>
-                            Check out this <a className="link" target="_blank" href="https://www.youtube.com/watch?v=Q_eia3jC9Ts">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.
+                            Check out this <a className="link" target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=Q_eia3jC9Ts">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.<br/><br/>
+                            <a className="link backTop" href="#top">Back to top</a>
                         </p>
                     </div>
                     <button className="close-button" onClick={ () => setModalIsOpen(false) }><AiOutlineClose color="#EEEEEE" className="close-icon"/></button>

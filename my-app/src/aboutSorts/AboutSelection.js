@@ -11,35 +11,56 @@ function AboutSelection() {
 
     return (
         <>
-            <button className='sortInfoButton' onClick={ () => setModalIsOpen(true) }><AiFillQuestionCircle className="side-icon"/> About Selection Sort</button>,
+            <button className='sortInfoButton' onClick={ () => setModalIsOpen(true) }><AiFillQuestionCircle className="side-icon"/> About Selection Sort</button>
             <div className="infoBox">
-                <Modal 
+                <Modal
+                    closeTimeoutMS={150}
+                    style = {
+                        {
+                            overlay: {
+                                backgroundColor: 'rgba(0,0,0,0.4)'
+                            },
+                            content: {
+                                background: '#C57B57',
+                                top: '60px',
+                                bottom: '60px',
+                                left: '60px',
+                                border:'none',
+                                right: '60px',
+                            }
+                        }
+                    }
                     isOpen={modalIsOpen} 
                     onRequestClose={ () => setModalIsOpen(false)}>
-                    <div className="aboutSortInfo">
-                        <h2>Basic Concept of Bubble Sort</h2>
-                        <p>1. In an unsorted array, have two pointers point to the first two elements and compare them and swap into ascending order if necessary.
-                        2. Then, increment the two pointers and do the same comparison and swap if necessary.
-                        3. Repeat step 2 until the end of the array has been reached.
-                        4. Then, repeat steps 1-3 all over again, but this time, go until you've reached the second to last element (length - 1).
-                            Remember arrays start count from zero, so you'll have to subtract 1 again if you are coding it.
-                        5. Cool fact/trick: the reason why it's called "bubble sort" is because the largest element of the array will "bubble" its way to the end of the array.
-                            This explains the reasoning behind step 4 and why we only need to go to the second to last element. The last element is already the largest!
+                    <div id="top" className="aboutSortInfo">
+                        <h2  className = "titles">Basic Concept of Selection Sort<hr/><br/></h2>
+                        
+                        <p className = "paragraphs">
+                           1. Iterate through the entire array. <br/><br/>
+                           2. At the current element, compare it to every element after it.<br/><br/>
+                           3. If an element smaller than the current element was found, swap that element with the element currently being traversed. If the minimum is still the originally traversed element, continue onto the next element without swapping.<br/><br/>
+
                         </p>
-                        <h2>Pseudocode of Bubble Sort</h2>
-                        <p>
-                            for every element "i" of index 0 to arrayLength-1,
-                            for every element "j" of index 0 to arrayLength - 1 - i, (see step 5 above for the intuition)
-                            if the element at j is greater than the element after it (j+1), swap them.
-                            if no swap has occured during an iteration, that means the array is sorted, and we can forgo the remaining loop, improving the time complexity.
+                        <h2 className="titles">Pseudocode of Selection Sort<hr/><br/></h2>
+                        
+                        <p className="paragraphs">
+                            for every element i of the array,<br/>
+                            &emsp;let min = i.<br/>
+                            &emsp;for every element j after i,<br/>
+                            &emsp;&emsp;&emsp;if there is an element smaller,<br/>
+                            &emsp;&emsp;&emsp;&emsp;min = j<br/>
+                            &emsp;if ( min != i )<br/>
+                            &emsp;&emsp;&emsp;swap( array[min], array[j] )<br/><br/>
                         </p>
-                        <h2>Big O Time Complexity</h2>
-                        <p>
-                            This sorting algorithm is easy to understand, and is a nice "brute force" solution. However, the time complexity is
-                            O(n^2) in its worst case, and is slightly improved with some modifications. (see Pseudocode)
+                        <h2 className="titles">Big O Time Complexity<hr/><br/></h2>
+                        
+                        <p className="paragraphs">
+                            This algorithm has an O(n^2) time complexity in all cases. This is because for every element, you must check every element after it to complete an iteration. In general, this algorithm performs worse than insertion sort, although the algorithms are very similar.<br/><br/>
+                            Check out this <a className="link" target="_blank" href="https://www.youtube.com/watch?v=9oWd4VJOwr0">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.<br/><br/>
+                            <a className="link backTop" rel="noreferrer"href="#top">Back to top</a>
                         </p>
                     </div>
-                    <AiOutlineClose onClick={ () => setModalIsOpen(false) }/>
+                    <button className="close-button" onClick={ () => setModalIsOpen(false) }><AiOutlineClose color="#EEEEEE" className="close-icon"/></button>
                 </Modal>
             </div>
         </>

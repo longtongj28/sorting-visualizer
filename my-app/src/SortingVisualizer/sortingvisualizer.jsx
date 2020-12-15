@@ -9,7 +9,7 @@ import {getQuickSortAnimations} from  './SortingAlgorithms/quickSort.js';
 import {getInsertionSortAnimations} from './SortingAlgorithms/insertionSort.js';
 import {getSelectionSortAnimations} from './SortingAlgorithms/selectionSort';
 import {AiFillGithub} from 'react-icons/ai';
-import styled from 'styled-components';
+import {FaStopCircle} from 'react-icons/fa';
 
  
 // Change this value for the number of bars (value) in the array.
@@ -251,24 +251,23 @@ export default class sortingvisualizer extends React.Component {
 
     render() {
         const {array} = this.state;
-        let disallowClick = 'normal';
-        if (this.state.sorting) disallowClick = 'not-allowed';
 
         return (
             [
             <header className="top">
+                <button title="Stop animation and reset array" className="stop-button"><a id="stop-link" href="/"><FaStopCircle id="stop-icon"/></a></button>
                 <div className ="speedSlider">
                     <div className="name-slider">Speed</div>
-                        <input className="slider" type="range" min={1} max ={100}value={this.state.speed} onChange={this.handleChangeSpeed}/>
+                        <input title="Drag left to make animation faster" className="slider" type="range" min={1} max ={100}value={this.state.speed} onChange={this.handleChangeSpeed}/>
                 </div>
                 <div className="barSlider">
                     <div className="name-slider">Bars</div>
-                        <input className="slider" type="range" min={10} max ={70}value={this.state.arrayBars} onChange={this.handleChangeBars}/>
+                        <input title="Drag right to increase the number of bars" className="slider" type="range" min={10} max ={70}value={this.state.arrayBars} onChange={this.handleChangeBars}/>
                 </div>
                 <Router>
                     <Navbar/>
                 </Router>
-                <a id="github-link" target ="_blank" href= "https://github.com/longtongj28/sorting-visualizer"><AiFillGithub id="github-icon"/></a>
+                <a id="github-link" target ="_blank" rel = "nonreferrer" href= "https://github.com/longtongj28/sorting-visualizer"><AiFillGithub title="Github Repository for the site"id="github-icon"/></a>
                 <a className="homelink" href='/'></a>
                 <h1 id = "title">Sorting Algorithms</h1>
                 <div className = "button-bar">

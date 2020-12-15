@@ -22,7 +22,7 @@ function AboutBubble() {
                             },
                             content: {
                                 boxShadow: '2px 2px 30px black',
-                                background: '#4A6C6F',
+                                background: '#2C2C34',
                                 top: '60px',
                                 bottom: '60px',
                                 left: '60px',
@@ -34,7 +34,7 @@ function AboutBubble() {
                     isOpen={modalIsOpen} 
                     onRequestClose={ () => setModalIsOpen(false)}>
                     <div className="aboutSortInfo">
-                        <h2 className = "titles">Basic Concept of Bubble Sort<hr/><br/></h2>
+                        <h2 id="top" className = "titles">Basic Concept of Bubble Sort<hr/><br/></h2>
                         
                         <p className = "paragraphs">
                             1. In an unsorted array, have two pointers point to the first two elements and compare them and swap into ascending order if necessary.
@@ -68,10 +68,11 @@ function AboutBubble() {
                         <p className="paragraphs">
                             This sorting algorithm is easy to understand, and is a nice "brute force" solution. However, the time complexity is
                             O(n^2) in its worst case, and is slightly improved with some modifications, which I have included in the pseudocode. You can tell through the nested for loop that, for each element for the array, iterates the whole array again.<br/><br/>
-                            Check out this <a className="link"target='_blank' href="https://www.youtube.com/watch?v=o4bAoo_gFBU">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.
+                            Check out this <a className="link"target='_blank' rel="noreferrer" href="https://www.youtube.com/watch?v=o4bAoo_gFBU">lecture/video</a> for a much more detailed explanation on everything about this sorting algorithm.<br/><br/>
+                            <a className="link backTop" href="#top">Back to top</a>
                         </p>
                     </div>
-                    <button className="close-button" onClick={ () => setModalIsOpen(false) }><AiOutlineClose color="#EEEEEE" className="close-icon"/></button>
+                    <button align="center" className="close-button" onClick={ () => setModalIsOpen(false) }><AiOutlineClose color="#EEEEEE" className="close-icon"/></button>
                 </Modal>
             </div>
         </>

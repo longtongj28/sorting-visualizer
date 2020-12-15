@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import Backdrop from '../backdrop/Backdrop';
-import { AiTwotoneSetting } from "react-icons/ai";
 import {Link} from 'react-router-dom';
 import {AiOutlineClose,AiOutlineInfoCircle} from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
@@ -26,7 +25,7 @@ function Navbar() {
             {backdrop}
             <div className="navbar">
                 <Link to="#" className='menu-bars'>
-                    <AiOutlineInfoCircle color="white"className='settings-icon' onClick={showSidebar}/>
+                    <AiOutlineInfoCircle title="Learn more about the site and the algorithms" color="white"className='settings-icon' onClick={showSidebar}/>
                 </Link>
             </div> 
             <nav className={sidebar ? 'nav-menu active':'nav-menu'}>

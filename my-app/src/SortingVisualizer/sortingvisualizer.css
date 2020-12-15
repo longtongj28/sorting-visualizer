@@ -23,10 +23,11 @@
 
 .top {
     z-index: 0;
-    box-shadow: 10px 10px 10px #343E3D;
+    box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     background-color: #1D1E2C;
-    
+    height: 128px;
+
 }
 
 .top #title {
@@ -45,7 +46,7 @@
 }
 .btn {
     border-radius: 3px;
-    box-shadow: 2px 2px 15px #454B66;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
     font-size: 14px;
     text-transform: uppercase;
     color: white;
@@ -76,20 +77,6 @@
     background:#1768AC;
 }
 
-
-.settings {
-    z-index: 2;
-    border-radius: 50%;
-    position:absolute;
-    outline:none;
-    cursor: pointer;
-    left:1%;
-    top:10%;
-    background:none;
-    border:none;
-    transition: all 0.25s;
-}
-
 #github-link {
     z-index: 10;
     position: absolute;
@@ -99,10 +86,11 @@
 }
 #github-icon {
     background:none;
+    justify-content: center;
     color: white;
     height: 35px;
     width: 35px;
-    transition: all 1s;
+    transition: all 0.4s;
 }
 #github-icon:hover {
     height: 40px;
@@ -153,4 +141,34 @@
 .slider:disabled{
     cursor:not-allowed;
     pointer-events:none;
+}
+
+#stop-icon {
+    background: none;
+    color: white;
+    z-index:4;
+    height:33px;
+    width: 33px;
+    transition: all 0.35s;
+}
+#stop-icon:hover {
+    color:grey;
+    height:36px;
+    width:36px;
+}
+#stop-link {
+    background: none;
+}
+.stop-button {
+    justify-content: center;
+    position: absolute;
+    background: none;
+    border: none;
+    outline: none;
+    z-index:3;
+    bottom: 15%;
+    left: 43px;
+    height:33px;
+    width: 33px;
+    transition: all 0.25s;
 }

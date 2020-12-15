@@ -50,17 +50,18 @@
 .settings-icon {
     height: 35px;
     width: 35px;
-    color:whitesmoke;
+    color:white;
     background-color: transparent;
     transition: all 0.5s;
 }
 .settings-icon:hover {
-    height:40px;
-    width: 40px;
+    height:38px;
+    width: 38px;
+    color:grey;
     transform:rotate(25deg);
 }
 .settings-icon:active {
-    transform:rotate(-45deg);
+    transform:rotate(-25deg);
 }
 
 .close {
